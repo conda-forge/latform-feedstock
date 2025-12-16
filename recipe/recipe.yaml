@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: latform
-  version: "0.1.2"
+  version: "0.1.3"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/latform-${{ version }}.tar.gz
-  sha256: 7b74f4838b6052cc0a20a5691ae8a531ea25fa597d1f2603f9cd2aec295c8772
+  sha256: 492cd82f101e9f0882a3b2e1dadf4dc8cc624acfb6539d233fe2f962a64a7332
 
 build:
   number: 0
