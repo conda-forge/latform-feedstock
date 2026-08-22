@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: latform
-  version: "0.2.3"
+  version: "0.3.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/latform-${{ version }}.tar.gz
-  sha256: a341ab018b40954a14849010badca7ab8c8b401e65e71d3ef91021f8d57ff6bb
+  sha256: 545b8a212a628bff1557a3411c9096f3b43339e9b5cc64eb2d26484839d93883
 
 build:
   number: 0
@@ -19,7 +19,14 @@ build:
   python:
     entry_points:
       - latform = latform.main:cli_main
+      - latform-apply = latform.apply:cli_main_apply
+      # - latform-diff = latform.diff:cli_main
+      - latform-dump = latform.dump:cli_main
+      # - latform-gitdiff = latform.diff:cli_main_gitdiff
       - latform-graph = latform.graph:cli_main
+      - latform-lint = latform.lint:cli_main
+      - latform-lsp = latform.lsp:main
+      - latform-template = latform.template:cli_main
 
 requirements:
   host:
@@ -31,19 +38,34 @@ requirements:
     - python >=${{ python_min }}
     - rich
     - typing_extensions
+    - pyyaml
+    - nmlform >=0.0.3
+    # For the language server:
+    - pygls >2.0
+    # Technically only for older Python versions:
+    - tomli
 
 tests:
   - python:
       imports:
         - latform
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - pip
     script:
       - latform --help
+      - latform-apply --help
+      # - latform-diff --help
+      - latform-dump --help
+      # - latform-gitdiff --help
       - latform-graph --help
+      - latform-lint --help
+      - latform-lsp --help
+      - latform-template --help
 
 about:
   summary: Bmad lattice parser/formatter tool
