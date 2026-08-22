@@ -20,9 +20,9 @@ build:
     entry_points:
       - latform = latform.main:cli_main
       - latform-apply = latform.apply:cli_main_apply
-      # - latform-diff = latform.diff:cli_main
+      - latform-diff = latform.diff:cli_main
       - latform-dump = latform.dump:cli_main
-      # - latform-gitdiff = latform.diff:cli_main_gitdiff
+      - latform-gitdiff = latform.diff:cli_main_gitdiff
       - latform-graph = latform.graph:cli_main
       - latform-lint = latform.lint:cli_main
       - latform-lsp = latform.lsp:main
@@ -59,9 +59,9 @@ tests:
     script:
       - latform --help
       - latform-apply --help
-      # - latform-diff --help
+      - latform-diff --help
       - latform-dump --help
-      # - latform-gitdiff --help
+      - latform-gitdiff --help
       - latform-graph --help
       - latform-lint --help
       - latform-lsp --help
