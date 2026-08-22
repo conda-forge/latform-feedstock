@@ -31,6 +31,10 @@ requirements:
     - python >=${{ python_min }}
     - rich
     - typing_extensions
+    - pyyaml
+    - nmlform >=0.0.3
+    # For the language server:
+    - pygls >2.0
 
 tests:
   - python:
@@ -43,7 +47,14 @@ tests:
         - pip
     script:
       - latform --help
+      - latform-apply --help
+      - latform-diff --help
+      - latform-dump --help
+      - latform-gitdiff --help
       - latform-graph --help
+      - latform-lint --help
+      - latform-lsp --help
+      - latform-template --help
 
 about:
   summary: Bmad lattice parser/formatter tool
